@@ -4,18 +4,41 @@ import { Check } from 'lucide-react'
 const PostpaidPlans = () => {
   const plans = [
     {
-      name: "Power Plan 1000",
-      price: 1000,
+      name: "Power Plan 125",
+      price: 125,
       popular: false,
-      flexiMinutes: "Unlimited",
-      nationalData: "Unlimited",
+      flexiMinutes: "100",
+      nationalData: "4",
+      benefits: [
+        "4 GB free data on WiFi UAE",
+        "No activation fee. Save AED 125"
+      ]
+    },
+    {
+      name: "Power Plan 200",
+      price: 200,
+      popular: true,
+      flexiMinutes: "400",
+      nationalData: "26",
       benefits: [
         "The Entertainer on us for 12 months",
-        "Roaming 5 GB",
-        "Free Internet Calling Pack",
         "Carry over data to next month",
+        "15 GB free data on WiFi UAE",
+        "No activation fee. Save AED 125"
+      ]
+    },
+    {
+      name: "Power Plan 300",
+      price: 300,
+      popular: false,
+      flexiMinutes: "1020",
+      nationalData: "50",
+      benefits: [
+        "The Entertainer on us for 12 months",
+        "Free Internet Calling Pack",
         "Amazon Prime on us",
-        "120 GB free data on WiFi UAE",
+        "Carry over data to next month",
+        "25 GB free data on WiFi UAE",
         "No activation fee. Save AED 125"
       ]
     },
@@ -36,44 +59,22 @@ const PostpaidPlans = () => {
       ]
     },
     {
-      name: "Power Plan 300",
-      price: 300,
+      name: "Power Plan 1000",
+      price: 1000,
       popular: false,
-      flexiMinutes: "1020",
-      nationalData: "50",
+      flexiMinutes: "Unlimited",
+      nationalData: "Unlimited",
       benefits: [
         "The Entertainer on us for 12 months",
+        "Roaming 5 GB",
         "Free Internet Calling Pack",
+        "Carry over data to next month",
         "Amazon Prime on us",
-        "Carry over data to next month",
-        "25 GB free data on WiFi UAE",
+        "120 GB free data on WiFi UAE",
         "No activation fee. Save AED 125"
       ]
-    },
-    {
-      name: "Power Plan 200",
-      price: 200,
-      popular: true,
-      flexiMinutes: "400",
-      nationalData: "26",
-      benefits: [
-        "The Entertainer on us for 12 months",
-        "Carry over data to next month",
-        "15 GB free data on WiFi UAE",
-        "No activation fee. Save AED 125"
-      ]
-    },
-    {
-      name: "Power Plan 125",
-      price: 125,
-      popular: false,
-      flexiMinutes: "100",
-      nationalData: "4",
-      benefits: [
-        "4 GB free data on WiFi UAE",
-        "No activation fee. Save AED 125"
-      ]
-    }
+    }   
+    
   ]
 
   return (
@@ -88,10 +89,13 @@ const PostpaidPlans = () => {
           {plans.map((plan) => (
             <div 
               key={plan.name}
-              className={`relative rounded-lg border p-6 ${
-                plan.popular ? 'border-blue-500 shadow-lg' : 'border-gray-200'
+              className={` relative p-6 bg-white rounded-2xl shadow-md border border-blue-200 transform transition-all duration-300 hover:scale-105 hover:shadow-lg
+                
+                ${
+                plan.popular ? 'border-blue-800 shadow-lg' : 'border-blue-100'
               }`}
             >
+            
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">
@@ -129,7 +133,7 @@ const PostpaidPlans = () => {
                 ))}
               </div>
               <div className='flex flex-col items-center'>
-              <button className="absolute w-3/5 bottom-0 mb-3 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">
+              <button className="absolute w-3/5 bottom-0 mb-3 bg-blue-500 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors transition-all duration-300 hover:bg-blue-200 ">
                 Select
               </button>
               </div>
