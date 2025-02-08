@@ -12,7 +12,8 @@ const PostpaidPlans = () => {
       benefits: [
         "4 GB free data on WiFi UAE",
         "No activation fee. Save AED 125"
-      ]
+      ],
+      limitedOffer: false
     },
     {
       name: "Power Plan 200",
@@ -25,7 +26,8 @@ const PostpaidPlans = () => {
         "Carry over data to next month",
         "15 GB free data on WiFi UAE",
         "No activation fee. Save AED 125"
-      ]
+      ],
+      limitedOffer: true,
     },
     {
       name: "Power Plan 300",
@@ -40,7 +42,8 @@ const PostpaidPlans = () => {
         "Carry over data to next month",
         "25 GB free data on WiFi UAE",
         "No activation fee. Save AED 125"
-      ]
+      ],
+      limitedOffer: true,
     },
     {
       name: "Power Plan 500",
@@ -56,7 +59,8 @@ const PostpaidPlans = () => {
         "Carry over data to next month",
         "100 GB free data on WiFi UAE",
         "No activation fee. Save AED 125"
-      ]
+      ],
+      limitedOffer: true
     },
     {
       name: "Power Plan 1000",
@@ -72,9 +76,9 @@ const PostpaidPlans = () => {
         "Amazon Prime on us",
         "120 GB free data on WiFi UAE",
         "No activation fee. Save AED 125"
-      ]
+      ],
+      limitedOffer: true
     }   
-    
   ]
 
   return (
@@ -89,31 +93,37 @@ const PostpaidPlans = () => {
           {plans.map((plan) => (
             <div 
               key={plan.name}
-              className={` relative p-6 bg-white rounded-2xl shadow-md border border-blue-200 transform transition-all duration-300 hover:scale-105 hover:shadow-lg
-                
-                ${
-                plan.popular ? 'border-blue-800 shadow-lg' : 'border-blue-100'
-              }`}
+              className={`relative p-6 bg-white rounded-2xl shadow-md border overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg
+                ${plan.popular ? 'border-blue-800 shadow-lg' : 'border-blue-200'}`}
             >
-            
-              {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">
-                    Most popular
-                  </span>
+              {/* Limited Time Offer - which is coming in top of the section */}
+              {plan.limitedOffer && (
+                <div className="absolute top-0 left-0 w-full bg-gradient-to-r from-blue-500 to-pink-500 text-white text-center text-sm font-bold py-3">
+                  Limited Time Offer!
                 </div>
               )}
 
-              <div className="text-center mb-6">
+              <div className={`text-center ${plan.limitedOffer ? 'mt-6' : 'mt-0'}`}>
+              <br />
                 <h2 className="text-xl font-bold mb-4">{plan.name}</h2>
                 <div className="text-3xl font-bold mb-2">
                   AED {plan.price}
                   <span className="text-sm font-normal text-gray-600">/month</span>
                 </div>
                 <p className="text-sm text-gray-600">For 12 months + 5% VAT</p>
-              </div>
+                <br />
+            {/* Most popular Highlights only given to 200 Plan */}
+              {plan.popular && (
+                <div className="">
+                  <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">
+                    Most popular
+                  </span>
+                </div>
+              )}
+              <br />
+            </div>
 
-              <div className="space-y-4 mb-6">
+              <div className="space-y-4 mb-6 mt-6">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-600">Flexi minutes</span>
                   <span className="font-semibold">{plan.flexiMinutes}</span>
@@ -132,10 +142,11 @@ const PostpaidPlans = () => {
                   </div>
                 ))}
               </div>
-              <div className='flex flex-col items-center'>
-              <button className="absolute w-3/5 bottom-0 mb-3 bg-blue-500 text-white py-2 rounded-lg hover:bg-pink-500 transition-colors transition-all duration-300 hover:bg-blue-200 ">
-                Select
-              </button>
+                {/* Select button Css */}
+              <div className="flex flex-col items-center">
+                <button className="absolute bottom-0 mb-3 w-3/5 bg-blue-500 text-white py-2 rounded-lg hover:bg-pink-500 transition-all duration-300">
+                  Select
+                </button>
               </div>
             </div>
           ))}
